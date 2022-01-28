@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import styles from "./App.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { selectUser, login, logout } from "./features/userSlice";
-import { auth } from "./firebase";
-import Feed from "./components/Feed";
-import Auth from "./components/Auth";
+import { auth } from "./config/firebase";
+import Feed from "./ui/page/home/Feed";
+import Auth from "./ui/page/auth/Auth";
 
 const App: React.FC = () => {
   const user = useSelector(selectUser);

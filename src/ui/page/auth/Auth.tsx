@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./Auth.module.css";
 import { useDispatch } from "react-redux";
-import { auth, provider, storage } from "../firebase";
+import { auth, provider, storage } from "../../../config/firebase";
 
 import {
   Avatar,
