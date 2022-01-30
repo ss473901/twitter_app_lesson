@@ -24,6 +24,9 @@ import EmailIcon from "@material-ui/icons/Email";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
+
+
+
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "100vh",
@@ -115,6 +118,44 @@ const Auth: React.FC = () => {
             {isLogin ? "Login" : "Register"}
           </Typography>
           <form className={classes.form} noValidate>
+            {!isLogin && (
+              <>
+                <TextField
+                  variant="outlined"
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="username"
+                  label="Username"
+                  name="username"
+                  autoComplete="username"
+                  autoFocus
+                  value={username}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    setUsername(e.target.value);
+                  }}
+                />
+                <Box textAlign="center">
+                  <IconButton>
+                    <label>
+                      <AccountCircleIcon
+                        fontSize="large"
+                        className={
+                          avatarImage
+                            ? styles.login_addIconLoaded
+                            : styles.login_addIcon
+                        }
+                      />
+                      <input
+                        className={styles.login_hiddenIcon}
+                        type="file"
+                        onChange={onChangeImageHandler}
+                      />
+                    </label>
+                  </IconButton>
+                </Box>
+              </>
+            )}
             <TextField
               variant="outlined"
               margin="normal"
@@ -146,6 +187,11 @@ const Auth: React.FC = () => {
               }}
             />
             <Button
+              disabled={
+                isLogin
+                  ? !email || password.length < 6
+                  : !username || !email || password.length < 6 || !avatarImage
+              }
               fullWidth
               variant="contained"
               color="primary"
