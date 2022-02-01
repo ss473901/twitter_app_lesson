@@ -80,9 +80,7 @@ const TweetInput: React.FC = () => {
             type="text"
             autoFocus
             value={tweetMsg}
-            onChange={(e) => {
-              setTweetMsg(e.target.value);
-            }}
+            onChange={(e) => setTweetMsg(e.target.value)}
           />
           <IconButton>
             <label>
