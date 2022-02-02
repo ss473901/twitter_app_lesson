@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import styles from "./TweetInput.module.css";
+import { storage, db, auth } from "../config/firebase";
+import firebase from "firebase/app";
 import { useSelector } from "react-redux";
 import { selectUser } from "../features/userSlice";
-import { storage, db, auth } from "../config/firebase";
 import { Avatar, Button, IconButton } from "@material-ui/core";
-import firebase from "firebase/app";
-import AddPhotoIcon from "@material-ui/icons/AddAPhoto";
+import AddAPhotoIcon from "@material-ui/icons/AddAPhoto";
 
 const TweetInput: React.FC = () => {
   const user = useSelector(selectUser);
@@ -40,7 +40,7 @@ const TweetInput: React.FC = () => {
             .child(fileName)
             .getDownloadURL()
             .then(async (url) => {
-              await db.collection("photos").add({
+              await db.collection("posts ").add({
                 avatar: user.photoUrl,
                 image: url,
                 text: tweetMsg,
@@ -84,7 +84,7 @@ const TweetInput: React.FC = () => {
           />
           <IconButton>
             <label>
-              <AddPhotoIcon
+              <AddAPhotoIcon
                 className={
                   tweetImage ? styles.tweet_addIconLoaded : styles.tweet_addIcon
                 }
