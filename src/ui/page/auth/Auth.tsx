@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateUserProfile } from "../../../features/userSlice";
 import styles from "./Auth.module.css";
-import { auth, provider, storage } from "../../../config/firebase";
+import { auth, provider, storage } from "../../../firebase";
 
 import {
   Avatar,
